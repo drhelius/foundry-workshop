@@ -4,31 +4,22 @@ Welcome to the Microsoft Foundry Agents Workshop! 🤖 This hands-on workshop wi
 
 ## Introduction
 
-In this workshop, you'll master the fundamentals of building AI agents with Microsoft Foundry. You'll learn how to create agents that can use tools, process data, maintain conversation context, and deliver intelligent responses. Through practical challenges, you'll gain hands-on experience with the enterprise-grade Agent Framework SDK and build production-ready AI solutions.
+In this workshop, you'll master the fundamentals of building AI agents with Microsoft Foundry, progressing from basic single-agent applications to sophisticated multi-agent orchestrations. You'll learn how to create agents that can use both built-in and custom tools, integrate with external services through Model Context Protocol (MCP), process data, maintain conversation context, and deliver intelligent responses.
 
-Using the Microsoft Foundry Agent Service SDK, you'll develop agents that leverage built-in tools like code interpreters to perform dynamic data analysis and statistical computations. By the end of this workshop, you'll have created a complete agent application that demonstrates the power of AI-driven automation and intelligent assistance.
+Starting with the Microsoft Foundry Agent Service SDK, you'll develop agents that leverage built-in tools like code interpreters for dynamic data analysis. You'll then advance to creating multi-agent systems with connected tools, integrating cloud-hosted MCP servers for external data access, and building sophisticated agent pipelines using the Microsoft Agent Framework SDK. By the end of this workshop, you'll have hands-on experience with multiple agent architectures and patterns, from stateful conversations and agent orchestration to sequential workflows and custom tool development.
 
 ## Learning Objectives 🎯
 
 By participating in this workshop, you will learn how to:
 
-- **Master Microsoft Foundry** by setting up projects, deploying models, and managing AI resources in the Azure AI ecosystem.
-- **Build Intelligent AI Agents** using the Microsoft Foundry Agent Service SDK with proper authentication, configuration, and tool integration.
-- **Implement Agent Tools** by leveraging built-in capabilities like the Code Interpreter to enable agents to execute Python code dynamically for data analysis.
+- **Master Microsoft Foundry** by setting up projects, deploying models, managing AI resources, and configuring development environments.
+- **Build Single-Agent Applications** using the Microsoft Foundry Agent Service SDK with proper authentication, configuration, and built-in tool integration like Code Interpreter.
+- **Create Multi-Agent Systems** by developing specialized agents that work together through connected agent tools for coordinated problem-solving.
+- **Integrate External Services** by connecting agents to cloud-hosted Model Context Protocol (MCP) servers for accessing real-time documentation and external data sources.
+- **Develop Custom Agent Tools** using the Microsoft Agent Framework SDK to create specialized functions that extend agent capabilities for domain-specific tasks.
+- **Implement Sequential Orchestration** by building agent pipelines where multiple agents process information in stages to produce comprehensive results.
 - **Manage Conversation Context** through thread-based interactions that maintain stateful conversations with full conversation history.
-- **Apply Agent Orchestration** by creating, running, and monitoring agent workflows with proper status checking and error handling.
-- **Develop Production-Ready Solutions** with environment configuration, credential management, and clean resource lifecycle management.
-
-## Architecture
-
-This workshop focuses on a client-driven agent architecture where applications connect to Microsoft Foundry to leverage hosted agents and models:
-
-- **Microsoft Foundry Project**: Centralized hub for managing AI agents, model deployments, and project resources with integrated monitoring and configuration.
-- **AI Agent with Code Interpreter**: Specialized agent powered by GPT-4o that analyzes data files and performs statistical analysis using Python code execution capabilities.
-- **Client Application**: Python-based application using the Microsoft Foundry Agent Service SDK to interact with agents, manage threads, and process responses.
-- **Stateful Conversations**: Thread-based communication maintaining conversation history, context, and multi-turn interactions for coherent agent responses.
-
-The workflow follows a simple yet powerful pattern: authenticate → upload data → create agent → run conversation → retrieve results. This architecture ensures secure, scalable agent interactions with full observability and control over the agent lifecycle.
+- **Apply Best Practices** including environment configuration, credential management, proper error handling, and clean resource lifecycle management.
 
 ## Requirements
 
@@ -46,4 +37,8 @@ To successfully complete this workshop, you will need the following:
 
 - **Challenge 02**: [Support Ticket Triage](./challenge02/readme.md) - Build a multi-agent system that triages customer support tickets by creating specialized agents for priority assessment, team assignment, and effort estimation, orchestrated through connected agent tools.
 
-- **Challenge 03**: [Coming Soon] - More advanced agent scenarios and patterns.
+- **Challenge 03**: [Connect AI agents to tools using Model Context Protocol (MCP)](./challenge03/readme.md) - Connect an AI agent to a cloud-hosted MCP server to enable access to Microsoft's official documentation through AI-powered search, allowing agents to provide real-time, accurate technical guidance.
+
+- **Challenge 04**: [Develop a chat agent with Microsoft Agent Framework](./challenge04/readme.md) - Create an AI agent that processes expense claims using the Microsoft Agent Framework SDK, implementing custom tools and functions to enable agents to perform specialized tasks like sending emails.
+
+- **Challenge 05**: [Develop a multi-agent solution with Microsoft Agent Framework](./challenge05/readme.md) - Build a sequential orchestration of multiple agents that work together to process customer feedback, practicing how to create agent pipelines that summarize, classify, and recommend actions.

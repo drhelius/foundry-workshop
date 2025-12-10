@@ -69,7 +69,7 @@ Let's start by creating a Foundry project.
     - **Resource group**: *The resource group where your Foundry resource is located (e.g., `userX`)*
     - **Region**: *Select `Sweden Central`*\*
 
-    > \* Some Azure AI resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
+    > \* Some Microsoft Foundry resources are constrained by regional model quotas. In the event of a quota limit being exceeded later in the exercise, there's a possibility you may need to create another resource in a different region.
 
 1. Select **Create** and wait for your project to be created.
 1. If prompted, deploy a **gpt-4o** model using either the *Global Standard* or *Standard* deployment option (depending on your quota availability).
@@ -99,12 +99,12 @@ cd challenge01
 1. In the cloud shell command-line pane, enter the following command to install the libraries you'll use:
 
     ```
-   python -m venv labenv
-   source ./labenv/bin/activate
+   python -m venv labenv01
+   source ./labenv01/bin/activate
    pip install -r requirements.txt
     ```
 
-1. Enter the following command to edit the configuration file that has been provided:
+2. Enter the following command to edit the configuration file that has been provided:
 
     ```
    code .env
@@ -112,8 +112,9 @@ cd challenge01
 
     The file is opened in a code editor.
 
-1. In the code file, replace the **your_project_endpoint** placeholder with the endpoint for your project (copied from the project **Overview** page in the Foundry portal) and ensure that the MODEL_DEPLOYMENT_NAME variable is set to your model deployment name (which should be *gpt-4o*).
-4. After you've replaced the placeholder, use the **CTRL+S** command to save your changes and then use the **CTRL+Q** command to close the code editor while keeping the cloud shell command line open.
+3. In the code file, replace the **your_project_endpoint** placeholder with the endpoint for your project (copied from the project **Overview** page in the Foundry portal) and ensure that the MODEL_DEPLOYMENT_NAME variable is set to your model deployment name (which should be *gpt-4o*).
+
+4. After you've replaced the placeholder, use the **CTRL+S** command to save your changes.
 
 ### 5.2. Write Code for the Agent Application
 
@@ -126,7 +127,7 @@ cd challenge01
     ```
 
 1. Review the existing code, which retrieves the application configuration settings and loads data from *data.txt* to be analyzed. The rest of the file includes comments where you'll add the necessary code to implement your data analysis agent.
-1. Find the comment **Add references** and add the following code to import the classes you'll need to build an Azure AI agent that uses the built-in code interpreter tool:
+1. Find the comment **Add references** and add the following code to import the classes you'll need to build an Microsoft Foundry agent that uses the built-in code interpreter tool:
 
     ```python
     # Add references
@@ -135,7 +136,7 @@ cd challenge01
     from azure.ai.agents.models import FilePurpose, CodeInterpreterTool, ListSortOrder, MessageRole
     ```
 
-1. Find the comment **Connect to the Agent client** and add the following code to connect to the Azure AI project.
+1. Find the comment **Connect to the Agent client** and add the following code to connect to the Microsoft Foundry project.
 
     > **Tip**: Be careful to maintain the correct indentation level.
 

@@ -1,6 +1,6 @@
 # Challenge 02 - Support Ticket Triage
 
-Welcome back! In this challenge you will compose an agent-driven workflow that triages customer support tickets by combining lightweight specialized agents. This builds on the Azure AI Agents SDK experience from the first challenge and introduces connected agents so one agent can orchestrate the others.
+Welcome back! In this challenge you will compose an agent-driven workflow that triages customer support tickets by combining lightweight specialized agents. This builds on the Microsoft Foundry Agents SDK experience from the first challenge and introduces connected agents so one agent can orchestrate the others.
 
 If you get stuck at any point, flag it for your coach.
 
@@ -14,10 +14,22 @@ You will modify the sample triage app in the `challenge02` folder to create seve
 
     ```bash
     cd challenge02
-    python -m venv labenv
-    source ./labenv/bin/activate
+    python -m venv labenv02
+    source ./labenv02/bin/activate
     pip install -r requirements.txt
     ```
+
+2. Enter the following command to edit the configuration file that has been provided:
+
+    ```
+   code .env
+    ```
+
+    The file is opened in a code editor.
+
+3. In the code file, replace the **your_project_endpoint** placeholder with the endpoint for your project (copied from the project **Overview** page in the Foundry portal) and ensure that the MODEL_DEPLOYMENT_NAME variable is set to your model deployment name (which should be *gpt-4o*).
+
+4. After you've replaced the placeholder, use the **CTRL+S** command to save your changes.
 
 ### 1.2. Update the triage agent code
 
@@ -221,7 +233,7 @@ You will modify the sample triage app in the `challenge02` folder to create seve
     print("Deleted effort agent.")
     ```
 
-12. Save your edits with **CTRL+S**. You can keep the file open for validation or close it with **CTRL+Q** while leaving the terminal active.
+12. Save your edits with **CTRL+S**.
 
 ## 2. Run and Test the Agent Application
 
@@ -264,4 +276,4 @@ You will modify the sample triage app in the `challenge02` folder to create seve
 
 ## 3. Summary
 
-In this challenge you linked multiple Azure AI agents via `ConnectedAgentTool` objects and used a higher-level triage agent that orchestrates them. You also saw how to capture the run output, validate agent-generated responses, and tear down the agents when the work is done.
+In this challenge you linked multiple Microsoft Foundry agents via `ConnectedAgentTool` objects and used a higher-level triage agent that orchestrates them. You also saw how to capture the run output, validate agent-generated responses, and tear down the agents when the work is done.
