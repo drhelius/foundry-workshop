@@ -1,7 +1,5 @@
 # Challenge 01 - Environment Creation and Resources Deployment
 
-**Expected Duration:** 30 minutes
-
 Welcome to your very first challenge! Your goal in this challenge is to create the services and environment necessary to conduct this hackathon. You will deploy the required resources in Azure, create your development environment and all the assets necessary for the subsequent challenges. By completing this challenge, you will set up the foundation for the rest of the hackathon. 
 
 If something is not working correctly, please do let your coach know!

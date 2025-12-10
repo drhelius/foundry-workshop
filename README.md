@@ -44,6 +44,6 @@ To successfully complete this workshop, you will need the following:
 
 - **Challenge 01**: [Environment Creation and Resources Deployment](./challenge01/readme.md) - Set up your development environment, deploy Microsoft Foundry resources, create your first project, and build a client application that uses an AI agent with Code Interpreter capabilities to analyze data and perform statistical analysis.
 
-- **Challenge 02**: [Coming Soon] - Additional challenges will be added to expand your agent capabilities.
+- **Challenge 02**: [Support Ticket Triage](./challenge02/readme.md) - Build a multi-agent system that triages customer support tickets by creating specialized agents for priority assessment, team assignment, and effort estimation, orchestrated through connected agent tools.
 
 - **Challenge 03**: [Coming Soon] - More advanced agent scenarios and patterns.
