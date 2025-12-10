@@ -1,10 +1,14 @@
 import os
 import asyncio
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Add references
 
 
+
+# Load environment variables
+load_dotenv()
 
 async def main():
     # Clear the console

@@ -81,9 +81,9 @@ Now you're ready to create a client app that defines an agent and a custom funct
     ```python
     # Create a chat agent
     async with (
-        AzureCliCredential() as credential,
+        DefaultAzureCredential() as credential,
         ChatAgent(
-            chat_client=AzureAIAgentClient(async_credential=credential),
+            chat_client=AzureAIAgentClient(credential=credential),
             name="expenses_agent",
             instructions="""You are an AI assistant for expense claim submission.
                             When a user submits expenses data and requests an expense claim, use the plug-in function to send an email to expenses@contoso.com with the subject 'Expense Claim`and a body that contains itemized expenses with a total.

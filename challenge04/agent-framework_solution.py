@@ -1,14 +1,17 @@
 import os
 import asyncio
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Add references
 from agent_framework import AgentThread, ChatAgent
 from agent_framework.azure import AzureAIAgentClient
-from azure.identity.aio import AzureCliCredential
+from azure.identity.aio import DefaultAzureCredential
 from pydantic import Field
 from typing import Annotated
 
+# Load environment variables
+load_dotenv()
 
 async def main():
     # Clear the console
@@ -30,9 +33,9 @@ async def process_expenses_data(prompt, expenses_data):
 
     # Create a chat agent
     async with (
-        AzureCliCredential() as credential,
+        DefaultAzureCredential() as credential,
         ChatAgent(
-            chat_client=AzureAIAgentClient(async_credential=credential),
+            chat_client=AzureAIAgentClient(credential=credential),
             name="expenses_agent",
             instructions="""You are an AI assistant for expense claim submission.
                             When a user submits expenses data and requests an expense claim, use the plug-in function to send an email to expenses@contoso.com with the subject 'Expense Claim`and a body that contains itemized expenses with a total.
