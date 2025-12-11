@@ -52,12 +52,13 @@ Now you're ready to create a client app that defines an agent and a custom funct
 2. At the top of the file under the comment **Add references**, and add the following code to reference the namespaces in the libraries you'll need to implement your agent:
 
     ```python
-   # Add references
-   import asyncio
-   from typing import cast
-   from agent_framework import ChatMessage, Role, SequentialBuilder, WorkflowOutputEvent
-   from agent_framework.azure import AzureAIAgentClient
-   from azure.identity import AzureCliCredential
+    # Add references
+    import asyncio
+    from typing import cast
+    from dotenv import load_dotenv
+    from agent_framework import ChatMessage, Role, SequentialBuilder, WorkflowOutputEvent
+    from agent_framework.azure import AzureAIAgentClient
+    from azure.identity.aio import DefaultAzureCredential
     ```
 
 3. In the **main** function, take a moment to review the agent instructions. These instructions define the behavior of each agent in the orchestration.
@@ -66,10 +67,8 @@ Now you're ready to create a client app that defines an agent and a custom funct
 
     ```python
     # Create the chat client
-    credential = AzureCliCredential()
-    async with (
-        AzureAIAgentClient(async_credential=credential) as chat_client,
-    ):
+    async with DefaultAzureCredential() as credential:
+        async with AzureAIAgentClient(credential=credential) as chat_client:
     ```
 
     Note that the **AzureCliCredential** object will allow your code to authenticate to your Azure account. The **AzureAIAgentClient** object will automatically include the Foundry project settings from the .env configuration.
@@ -79,21 +78,21 @@ Now you're ready to create a client app that defines an agent and a custom funct
     (Be sure to maintain the indentation level)
 
     ```python
-        # Create agents
-        summarizer = chat_client.create_agent(
-            instructions=summarizer_instructions,
-            name="summarizer",
-        )
+            # Create agents
+            summarizer = chat_client.create_agent(
+                instructions=summarizer_instructions,
+                name="summarizer",
+            )
 
-        classifier = chat_client.create_agent(
-            instructions=classifier_instructions,
-            name="classifier",
-        )
+            classifier = chat_client.create_agent(
+                instructions=classifier_instructions,
+                name="classifier",
+            )
 
-        action = chat_client.create_agent(
-            instructions=action_instructions,
-            name="action",
-        )
+            action = chat_client.create_agent(
+                instructions=action_instructions,
+                name="action",
+            )
     ```
 
 #### Create a sequential orchestration
@@ -103,19 +102,19 @@ Now you're ready to create a client app that defines an agent and a custom funct
     (Be sure to maintain the indentation level)
 
     ```python
-        # Initialize the current feedback
-        feedback="""
-        I use the dashboard every day to monitor metrics, and it works well overall. 
-        But when I'm working late at night, the bright screen is really harsh on my eyes. 
-        If you added a dark mode option, it would make the experience much more comfortable.
-        """
+            # Initialize the current feedback
+            feedback="""
+            I use the dashboard every day to monitor metrics, and it works well overall. 
+            But when I'm working late at night, the bright screen is really harsh on my eyes. 
+            If you added a dark mode option, it would make the experience much more comfortable.
+            """
     ```
 
 2. Under the comment **Build a sequential orchestration**, add the following code to define a sequential orchestration with the agents you defined:
 
     ```python
-        # Build sequential orchestration
-        workflow = SequentialBuilder().participants([summarizer, classifier, action]).build()
+            # Build sequential orchestration
+            workflow = SequentialBuilder().participants([summarizer, classifier, action]).build()
     ```
 
     The agents will process the feedback in the order they are added to the orchestration.
@@ -123,11 +122,11 @@ Now you're ready to create a client app that defines an agent and a custom funct
 3. Add the following code under the comment **Run and collect outputs**:
 
     ```python
-        # Run and collect outputs
-        outputs: list[list[ChatMessage]] = []
-        async for event in workflow.run_stream(f"Customer feedback: {feedback}"):
-            if isinstance(event, WorkflowOutputEvent):
-                outputs.append(cast(list[ChatMessage], event.data))
+            # Run and collect outputs
+            outputs: list[list[ChatMessage]] = []
+            async for event in workflow.run_stream(f"Customer feedback: {feedback}"):
+                if isinstance(event, WorkflowOutputEvent):
+                    outputs.append(cast(list[ChatMessage], event.data))
     ```
 
     This code runs the orchestration and collects the output from each of the participating agents.
@@ -135,11 +134,11 @@ Now you're ready to create a client app that defines an agent and a custom funct
 4. Add the following code under the comment **Display outputs**:
 
     ```python
-        # Display outputs
-        if outputs:
-            for i, msg in enumerate(outputs[-1], start=1):
-                name = msg.author_name or ("assistant" if msg.role == Role.ASSISTANT else "user")
-                print(f"{'-' * 60}\n{i:02d} [{name}]\n{msg.text}")
+            # Display outputs
+            if outputs:
+                for i, msg in enumerate(outputs[-1], start=1):
+                    name = msg.author_name or ("assistant" if msg.role == Role.ASSISTANT else "user")
+                    print(f"{'-' * 60}\n{i:02d} [{name}]\n{msg.text}")
     ```
 
     This code formats and displays the messages from the workflow outputs you collected from the orchestration.

@@ -54,7 +54,7 @@ Now you're ready to create a client app that defines an agent and a custom funct
    # Add references
    from agent_framework import AgentThread, ChatAgent
    from agent_framework.azure import AzureAIAgentClient
-   from azure.identity.aio import AzureCliCredential
+   from azure.identity.aio import DefaultAzureCredential
    from pydantic import Field
    from typing import Annotated
     ```

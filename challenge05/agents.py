@@ -1,6 +1,10 @@
 # Add references
 
 
+
+# Load environment variables
+load_dotenv()
+
 async def main():
     # Agent instructions
     summarizer_instructions="""
