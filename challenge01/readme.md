@@ -33,11 +33,7 @@ Before anything else, let's log in into the CLI with our account. Please paste t
 az login --use-device-code
 ```
 
-In this lab you will be provided with a user like `userX` where X is a number.
-
-The complete user login is: `userX@MngEnvMCAP088700.onmicrosoft.com`
-
-Password will be provided by your coach.
+User and password will be provided by your coach.
 
 Use this username and password to log in into the link provided by the CLI. Setup your Microsoft Authenticator app if needed.
 
